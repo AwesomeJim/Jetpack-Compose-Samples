@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                Greeting("Android")
+                MyScreenContent()
             }
         }
     }
