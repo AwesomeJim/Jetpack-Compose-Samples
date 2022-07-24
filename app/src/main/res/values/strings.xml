@@ -2,4 +2,5 @@
     <string name="app_name">My Compose Application</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_composable_functions">ComposableFunctionsActivity</string>
+    <string name="title_activity_jetpack_composebasics">JetpackComposebasics</string>
 </resources>

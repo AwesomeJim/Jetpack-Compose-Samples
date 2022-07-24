@@ -9,6 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyComposeApplication">
         <activity
+            android:name=".JetpackComposebasics"
+            android:exported="false"
+            android:label="@string/title_activity_jetpack_composebasics"
+            android:theme="@style/Theme.MyComposeApplication" />
+        <activity
             android:name=".ComposableFunctionsActivity"
             android:exported="false"
             android:label="@string/title_activity_composable_functions"
