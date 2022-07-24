@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     MyComposeApplicationTheme {
-        Surface(color = Color.Yellow) {
+        Surface(color = Color.White) {
             content()
         }
     }
