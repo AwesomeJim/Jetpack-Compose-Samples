@@ -4,13 +4,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion "30.0.3"
-
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         applicationId "com.awesome.compose.firstApp"
-        minSdkVersion 21
-        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
@@ -37,7 +36,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion composeCompiler_version
     }
     namespace 'com.awesome.compose.firstApp'
     packagingOptions {
@@ -54,7 +53,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
 
     implementation "androidx.compose.ui:ui:$compose_version"
-    
+
     implementation "androidx.compose.material:material:$compose_version"
     // Tooling support (Previews, etc.)
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
@@ -85,7 +84,6 @@ dependencies {
 
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-
 
 
     debugImplementation "androidx.customview:customview-poolingcontainer:1.0.0-rc01"
