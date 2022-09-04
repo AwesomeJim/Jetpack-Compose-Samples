@@ -14,10 +14,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+/**
+ * A stateless composable is a composable that doesn't own any state, meaning it doesn't hold or define or modify new state.
+
+A stateful composable is a composable that owns a piece of state that can change over time.
+
+In real apps, having a 100% stateless composable can be difficult to achieve depending on the composable's responsibilities.
+You should design your composables in a way that they will own as little state as possible and allow the state to be hoisted,
+when it makes sense, by exposing it in the composable's API.
+
+ */
+
+
 @Composable
-fun WaterCounter(modifier: Modifier = Modifier) {
-    // Changes to count are now tracked by Compose
-    var count by rememberSaveable { mutableStateOf(0) }
+fun StatelessCounter(
+    count: Int, onIncrement: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -31,7 +44,7 @@ fun WaterCounter(modifier: Modifier = Modifier) {
             )
         }
         Button(
-            onClick = { count++ },
+            onClick = onIncrement,
             enabled = count < 10,
             modifier = Modifier.padding(top = 8.dp)
         ) {
@@ -41,10 +54,15 @@ fun WaterCounter(modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun StatefulCounter(modifier: Modifier = Modifier) {
+    var count by rememberSaveable { mutableStateOf(0) }
+    StatelessCounter(count, { count++ }, modifier)
+}
+
 
 @Preview(showBackground = true, backgroundColor = 0xFFF0EAE2, widthDp = 360, heightDp = 640)
 @Composable
 fun WellnessScreenPreview() {
     WellnessScreen()
-
 }
