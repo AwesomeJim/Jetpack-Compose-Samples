@@ -9,15 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.awesome.basicstatecodelab.ui.theme.MyComposeApplicationTheme
 
 @Composable
 fun WellnessTaskItem(
@@ -44,29 +38,5 @@ fun WellnessTaskItem(
         IconButton(onClick = onClose) {
             Icon(Icons.Filled.Close, contentDescription = "Close")
         }
-    }
-}
-
-@Composable
-fun WellnessTaskItem(taskName: String, onClose: () -> Unit, modifier: Modifier = Modifier) {
-    var checkedState by rememberSaveable { mutableStateOf(false) }
-    WellnessTaskItem(
-        taskName = taskName,
-        checked = checkedState,
-        onCheckedChange = { newValue -> checkedState = newValue },
-        onClose = onClose,
-        modifier = modifier,
-    )
-}
-
-
-@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2)
-@Composable
-fun WellnessTaskItemPreview() {
-    MyComposeApplicationTheme {
-//        WellnessTaskItem(
-//            taskName = "Drink water",
-//            modifier = Modifier.padding(8.dp)
-//        )
     }
 }
