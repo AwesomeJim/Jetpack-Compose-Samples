@@ -28,16 +28,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun WellnessScreenPreview() {
-    WellnessScreen()
-
-}
-
-@Preview(showBackground = true)
+@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2)
 @Composable
 fun DefaultPreview() {
     MyComposeApplicationTheme {
-        WellnessScreenPreview()
+        WellnessScreen()
     }
 }
