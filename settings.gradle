@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "My Compose Application"
 include ':app'
 include ':BasicLayoutsCodelab'
+include ':basicstatecodelab'
