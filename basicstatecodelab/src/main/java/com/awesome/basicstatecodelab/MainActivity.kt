@@ -31,6 +31,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun WellnessScreenPreview() {
     WellnessScreen()
+
 }
 
 @Preview(showBackground = true)
