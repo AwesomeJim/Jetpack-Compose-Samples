@@ -33,5 +33,6 @@ class MainActivity : ComponentActivity() {
 fun DefaultPreview() {
     MyComposeApplicationTheme {
         WellnessScreen()
+        
     }
 }
