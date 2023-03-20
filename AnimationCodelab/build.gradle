@@ -20,11 +20,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         applicationId 'com.example.android.codelab.animation'
-        minSdkVersion 21
-        targetSdkVersion 32
         versionCode 1
         versionName '1.0'
     }
@@ -41,16 +42,16 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion composeCompiler_version
     }
+    namespace 'com.example.android.codelab.animation'
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.8.0'
-
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.activity:activity-compose:1.5.1'
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.core:core-ktx:$coreKtx"
+    implementation "androidx.compose.ui:ui:$composeUiTooling"
+    implementation "androidx.compose.material:material:$composeVersion"
+    implementation "androidx.compose.ui:ui-tooling-preview:$composeUiTooling"
+    implementation "androidx.activity:activity-compose:$composeActivity"
+    debugImplementation "androidx.compose.ui:ui-tooling:$composeUiTooling"
 }
 
 // Compiler flag to use experimental Compose APIs

@@ -43,14 +43,15 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion composeCompiler_version
     }
+    namespace 'com.codelab.theming'
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation 'androidx.activity:activity-compose:1.5.1'
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    implementation "androidx.core:core-ktx:$coreKtx"
+    implementation "androidx.compose.ui:ui:$composeUiTooling"
+    implementation "androidx.compose.material:material:$composeVersion"
+    implementation "androidx.compose.material:material-icons-extended:$composeVersion"
+    implementation "androidx.activity:activity-compose:$composeActivity"
+    implementation "androidx.compose.ui:ui-tooling-preview:$composeUiTooling"
+    debugImplementation "androidx.compose.ui:ui-tooling:$composeUiTooling"
 }
