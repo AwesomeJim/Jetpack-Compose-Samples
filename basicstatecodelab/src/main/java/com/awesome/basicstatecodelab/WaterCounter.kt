@@ -54,6 +54,12 @@ fun StatelessCounter(
     }
 }
 
+/**
+ * Stateful counter owns the state.
+ * That means that it holds the count state and modifies it when calling the StatelessCounter function.
+ *
+ * @param modifier
+ */
 @Composable
 fun StatefulCounter(modifier: Modifier = Modifier) {
     var count by rememberSaveable { mutableStateOf(0) }
