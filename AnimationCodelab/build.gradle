@@ -40,7 +40,7 @@ android {
         jvmTarget = '1.8'
     }
     composeOptions {
-        kotlinCompilerExtensionVersion composeCompiler_version
+        kotlinCompilerExtensionVersion rootProject.composeCompilerVersion
     }
     namespace 'com.example.android.codelab.animation'
 }

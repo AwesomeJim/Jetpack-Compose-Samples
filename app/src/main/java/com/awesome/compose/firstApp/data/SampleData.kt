@@ -71,4 +71,21 @@ object SampleData {
             "Have you tried writing build.gradle with KTS?"
         ),
     )
+
+    val textComposable = Message(
+        "Text composable",
+        "Displays text and follows Material Design guidelines."
+    )
+    val imageComposable = Message(
+        "Image composable",
+        "Creates a composable that lays out and draws a given Painter class object"
+    )
+    val rowComposable = Message(
+        "Row composable",
+        "A layout composable that places its children in a horizontal sequence"
+    )
+    val columnComposable = Message(
+        "Column composable",
+        "A layout composable that places its children in a vertical sequence."
+    )
 }

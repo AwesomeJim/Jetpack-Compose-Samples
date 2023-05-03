@@ -41,7 +41,7 @@ android {
          compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion composeCompiler_version
+        kotlinCompilerExtensionVersion rootProject.composeCompilerVersion
     }
     namespace 'com.codelab.theming'
 }
