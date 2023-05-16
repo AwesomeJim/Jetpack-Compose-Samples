@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = 23
-        targetSdk = 33
+        minSdk = libs.versions.min.sdk.get().toInt()
+        targetSdk = libs.versions.target.sdk.get().toInt()
         applicationId = "com.codelab.theming"
         versionCode = 1
         versionName = "1.0"
@@ -25,7 +25,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     namespace = "com.codelab.theming"
 }

@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = 23
-        targetSdk = 33
+        minSdk = libs.versions.min.sdk.get().toInt()
+        targetSdk = libs.versions.target.sdk.get().toInt()
         applicationId = "com.awesome.compose.firstApp"
         versionCode = 1
         versionName = "1.0"
@@ -29,6 +29,19 @@ android {
             )
         }
     }
+    flavorDimensions += "tier"
+    productFlavors {
+        create("free") {
+            dimension = "tier"
+            applicationId = "com.example.myapp.free"
+        }
+
+        create("paid") {
+            dimension = "tier"
+            applicationId = "com.example.myapp.paid"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,7 +53,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     namespace = "com.awesome.compose.firstApp"
     packaging {

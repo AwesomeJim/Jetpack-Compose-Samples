@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = 23
-        targetSdk = 33
+        minSdk = libs.versions.min.sdk.get().toInt()
+        targetSdk = libs.versions.target.sdk.get().toInt()
         applicationId = "com.example.android.codelab.animation"
         versionCode = 1
         versionName = "1.0"
@@ -21,10 +21,10 @@ android {
         compose = true
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = libs.versions.jvm.target.get()
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     namespace = "com.example.android.codelab.animation"
 }
