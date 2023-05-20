@@ -14,10 +14,11 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "My Compose Application"
-include (":app")
-include (":BasicLayoutsCodelab")
-include (":basicstatecodelab")
-include (":themingCodelab")
-include (":AnimationCodelab")
-include (":NavigationCodelab")
+include(":app")
+include(":BasicLayoutsCodelab")
+include(":basicstatecodelab")
+include(":themingCodelab")
+include(":AnimationCodelab")
+include(":NavigationCodelab")
 include(":tipcalculator")
+include (":affirmations")

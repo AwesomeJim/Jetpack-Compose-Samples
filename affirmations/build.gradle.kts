@@ -4,13 +4,15 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
 }
 
+
 android {
-    compileSdk =libs.versions.compile.sdk.get().toInt()
+    namespace = "com.example.affirmations"
+    compileSdk = libs.versions.compile.sdk.get().toInt()
+
     defaultConfig {
+        applicationId = "com.example.affirmations"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
-        namespace = "com.awesome.basicstatecodelab"
-        applicationId = "com.awesome.basicstatecodelab"
         versionCode = 1
         versionName = "1.0"
 
@@ -20,21 +22,19 @@ android {
         }
     }
 
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile ('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        allWarningsAsErrors = true
     }
     buildFeatures {
         compose = true
@@ -50,31 +50,19 @@ android {
 }
 
 dependencies {
-    //
-    implementation(libs.androidx.appcompat)
+
     implementation(libs.androidx.core.ktx)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.com.google.android.material)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewModelCompose)
-//
-//    // Compose
-    implementation(libs.androidx.compose.runtime)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.material)
-    implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.activity.compose)
-
-    // Testing dependencies
-    androidTestImplementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.arch.core.testing)
-    androidTestImplementation(libs.androidx.test.espresso.contrib)
+    androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(libs.androidx.navigation.testing)
-
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
