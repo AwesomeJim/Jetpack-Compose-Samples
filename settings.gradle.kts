@@ -21,4 +21,5 @@ include(":themingCodelab")
 include(":AnimationCodelab")
 include(":NavigationCodelab")
 include(":tipcalculator")
-include (":affirmations")
+include (":affirmations")//
+include(":woof-App")
