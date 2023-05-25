@@ -24,3 +24,4 @@ include(":tipcalculator")
 include (":affirmations")//
 include(":woof-App")
 include(":DessertClicker")
+include(":UnscrambleGame")
