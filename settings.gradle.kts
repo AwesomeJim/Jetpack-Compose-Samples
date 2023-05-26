@@ -25,3 +25,4 @@ include (":affirmations")//
 include(":woof-App")
 include(":DessertClicker")
 include(":UnscrambleGame")
+include(":CupCakeNavigation")
