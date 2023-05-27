@@ -119,7 +119,7 @@ fun OrderSummaryScreen(
     }
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun OrderSummaryPreview(){
     OrderSummaryScreen(

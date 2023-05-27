@@ -119,7 +119,7 @@ fun SelectOptionScreen(
 
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun SelectOptionPreview(){
     SelectOptionScreen(
