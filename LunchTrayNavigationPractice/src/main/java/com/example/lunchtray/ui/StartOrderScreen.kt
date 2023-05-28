@@ -50,7 +50,7 @@ fun StartOrderScreen(
     }
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun StartOrderPreview(){
     StartOrderScreen(

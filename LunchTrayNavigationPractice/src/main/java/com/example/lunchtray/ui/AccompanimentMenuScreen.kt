@@ -44,7 +44,7 @@ fun AccompanimentMenuScreen(
     )
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun AccompanimentMenuPreview(){
     AccompanimentMenuScreen(

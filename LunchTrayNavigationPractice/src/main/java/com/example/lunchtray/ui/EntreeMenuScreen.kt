@@ -44,7 +44,7 @@ fun EntreeMenuScreen(
     )
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun EntreeMenuPreview(){
     EntreeMenuScreen(
