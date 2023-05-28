@@ -5,18 +5,18 @@ plugins {
 }
 
 android {
-    namespace ="com.example.cupcake"
+    namespace = "com.example.cupcake"
     compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        applicationId ="com.example.cupcake"
+        applicationId = "com.example.cupcake"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
-        versionCode =1
-        versionName="1.0"
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner= "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
-            useSupportLibrary =true
+            useSupportLibrary = true
         }
     }
 
@@ -52,12 +52,6 @@ android {
 }
 
 dependencies {
-    //implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    //implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-   // implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-   // implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
-    // implementation 'androidx.navigation:navigation-compose:2.5.3'
-
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -70,6 +64,11 @@ dependencies {
     implementation(libs.androidx.navigation.navigation.compose)
     implementation(libs.androidx.lifecycle.viewModelCompose)
     testImplementation(libs.junit)
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation(libs.androidx.test.espresso.intents)
+
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
