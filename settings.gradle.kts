@@ -21,10 +21,11 @@ include(":themingCodelab")
 include(":AnimationCodelab")
 include(":NavigationCodelab")
 include(":tipcalculator")
-include (":affirmations")//
+include(":affirmations")//
 include(":woof-App")
 include(":DessertClicker")
 include(":UnscrambleGame")
 include(":CupCakeNavigation")
 include(":LunchTrayNavigationPractice")
 include(":Reply-Adaptive-app-with-dynamic-navigation")
+include(":SportApp-LargeScreenAdaptation")
