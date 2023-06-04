@@ -1,4 +1,5 @@
 [versions]
+kotlinxCoroutinesTest="1.6.4"
 min-sdk= "23"
 target-sdk = "33"
 compile-sdk = "33"
@@ -45,6 +46,7 @@ navigationComposeVersion = "2.5.3"
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-compose" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 com-google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }

@@ -52,9 +52,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-//    testOptions {
-//        unitTests.returnDefaultValues = true
-//    }
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.androidx.navigation.navigation.compose)
     implementation(libs.androidx.lifecycle.viewModelCompose)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.navigation.testing)
