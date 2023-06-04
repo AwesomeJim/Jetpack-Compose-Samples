@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
+    //id ("org.jetbrains.kotlin.plugin.serialization", version "1.7.10")
 }
 
 android {
@@ -67,6 +69,15 @@ dependencies {
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.activity.compose)
+
+    // Retrofit
+    implementation(libs.retrofit)
+// Retrofit with Scalar Converter
+    //implementation(libs.converter.scalars)
+    // Kotlin serialization
+    implementation (libs.kotlinx.serialization.json)
+    // Retrofit with Kotlin serialization Converter
+    implementation (libs.retrofit2.kotlinx.serialization.converter)
 
     // Testing dependencies
     androidTestImplementation(platform(libs.androidx.compose.bom))
