@@ -18,7 +18,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = libs.versions.jvm.target.get()
         allWarningsAsErrors = true
     }
     buildFeatures {
