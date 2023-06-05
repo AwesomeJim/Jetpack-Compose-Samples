@@ -15,7 +15,6 @@
  */
 package com.example.marsphotos.ui.screens
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -27,12 +26,13 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.marsphotos.MarsPhotosApplication
 import com.example.marsphotos.data.MarsPhotosRepository
+import com.example.marsphotos.network.MarsPhoto
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 
 sealed interface MarsUiState {
-    data class Success(val photos: String) : MarsUiState
+    data class Success(val photos: List<MarsPhoto>) : MarsUiState
     object Error : MarsUiState
     object Loading : MarsUiState
 }
@@ -58,8 +58,8 @@ class MarsViewModel(private val marsPhotosRepository: MarsPhotosRepository) : Vi
         viewModelScope.launch {
             marsUiState = try {
                 val listResult = marsPhotosRepository.getMarsPhotos()
-                Log.d(TAG, "getMarsPhotos: ${listResult.size}")
-                MarsUiState.Success("Success: ${listResult.size} Mars photos retrieved")
+               // Log.d(TAG, "getMarsPhotos: ${listResult.size}")
+                MarsUiState.Success(listResult)
             } catch (e: IOException) {
                 MarsUiState.Error
             }

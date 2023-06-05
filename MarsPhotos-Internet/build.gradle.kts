@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.activity.compose)
 
@@ -82,6 +83,9 @@ dependencies {
     implementation (libs.kotlinx.serialization.json)
     // Retrofit with Kotlin serialization Converter
     implementation (libs.retrofit2.kotlinx.serialization.converter)
+
+    // Coil
+    implementation(libs.coil.compose)
 
     // Testing dependencies
     androidTestImplementation(platform(libs.androidx.compose.bom))
