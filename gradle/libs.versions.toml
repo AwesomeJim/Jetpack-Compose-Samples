@@ -1,11 +1,12 @@
 [versions]
 coilCompose="2.4.0"
 converterScalars="2.9.0"
-kotlinxCoroutinesTest="1.6.4"
+kotlinxCoroutinesTest="1.7.1"
 kotlinxSerializationJson="1.4.0"
 min-sdk= "23"
 retrofit="2.9.0"
 retrofit2KotlinxSerializationConverter="0.8.0"
+roomRuntime="2.5.1"
 target-sdk = "33"
 compile-sdk = "33"
 androidGradlePlugin = "8.0.2"
@@ -50,6 +51,8 @@ navigationComposeVersion = "2.5.3"
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-compose" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "converterScalars" }
