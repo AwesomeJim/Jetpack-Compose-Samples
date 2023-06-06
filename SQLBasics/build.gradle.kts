@@ -1,9 +1,11 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
-}
+    id(libs.plugins.com.android.application.get().pluginId)
+    id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId)
+    //id(libs.plugins.kapt.get().pluginId)
+    id(libs.plugins.com.google.devtools.ksp.get().pluginId)
 
+}
 
 android {
     namespace = "com.example.sqldemo"
@@ -53,14 +55,27 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = libs.versions.jvm.target.get()
+            suppressWarnings = true
+        }
+    }
 }
 
 dependencies {
 
-
     implementation(libs.androidx.room.runtime)
     // kapt("androidx.room:room-compiler:$room_version")
     implementation(libs.androidx.room.ktx)
+
+    annotationProcessor(libs.androidx.room.compiler)
+
+    // To use Kotlin annotation processing tool (kapt)
+    //kapt("androidx.room:room-compiler:$room_version")
+    ksp(libs.androidx.room.compiler)
+
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -69,7 +84,7 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.compose.materialWindow)
     implementation(libs.androidx.navigation.navigation.compose)

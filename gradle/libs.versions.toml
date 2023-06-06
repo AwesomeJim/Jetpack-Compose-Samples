@@ -6,6 +6,7 @@ kotlinxSerializationJson="1.4.0"
 min-sdk= "23"
 retrofit="2.9.0"
 retrofit2KotlinxSerializationConverter="0.8.0"
+roomCompiler="2.5.0"
 roomRuntime="2.5.1"
 target-sdk = "33"
 compile-sdk = "33"
@@ -43,6 +44,8 @@ coreTestingVersion = "2.2.0"
 
 gradleVersion = "7.2.2"
 kotlin = "1.8.10"
+
+ksp = "1.8.10-1.0.9"
 ktlintVersion = "0.45.2"
 
 materialVersion = "1.9.0"
@@ -51,6 +54,8 @@ navigationComposeVersion = "2.5.3"
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-compose" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-compiler-2_5_0 = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
@@ -102,3 +107,4 @@ kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+com-google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
