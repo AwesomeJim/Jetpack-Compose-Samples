@@ -6,11 +6,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sqldemo"
     compileSdk = libs.versions.compile.sdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.example.sqldemo"
+        applicationId = "com.example.inventory"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = 1
@@ -59,10 +58,11 @@ android {
             suppressWarnings = true
         }
     }
+
+    namespace = "com.example.inventory"
 }
 
 dependencies {
-
     implementation(libs.androidx.room.runtime)
     // kapt("androidx.room:room-compiler:$room_version")
     implementation(libs.androidx.room.ktx)
