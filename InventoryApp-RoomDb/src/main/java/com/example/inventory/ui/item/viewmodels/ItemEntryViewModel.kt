@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModel
 import com.example.inventory.data.ItemsRepository
 import com.example.inventory.ui.item.ItemUiState
 import com.example.inventory.ui.item.isValid
+import com.example.inventory.ui.item.toItem
 
 /**
  * View Model to validate and insert items in the Room database.
@@ -41,5 +42,11 @@ class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewMod
      */
     fun updateUiState(newItemUiState: ItemUiState) {
         itemUiState = newItemUiState.copy( actionEnabled = newItemUiState.isValid())
+    }
+
+    suspend fun saveItem() {
+        if (itemUiState.isValid()) {
+            itemsRepository.insertItem(itemUiState.toItem())
+        }
     }
 }
