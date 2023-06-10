@@ -45,7 +45,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -84,7 +83,7 @@ fun BluromaticScreenContent(
 ) {
     var selectedValue by rememberSaveable { mutableStateOf(1) }
     val context = LocalContext.current
-    Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))) {
+    Column(modifier = Modifier.padding(8.dp)) {
         Image(
             painter = painterResource(R.drawable.android_cupcake),
             contentDescription = stringResource(R.string.description_image),
@@ -165,7 +164,7 @@ private fun BlurAmountContent(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showSystemUi = true)
 @Composable
 fun BluromaticScreenContentPreview() {
     BluromaticTheme {

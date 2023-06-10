@@ -52,14 +52,11 @@ android {
 dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
- 
-//    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-//    implementation ("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
-//    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
-//    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.androidx.lifecycle.runtime.compose)
 
     implementation(libs.androidx.work.runtime.ktx)
-
     //
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
