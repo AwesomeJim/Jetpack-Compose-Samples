@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.work.testing)
 
     // Testing dependencies
     androidTestImplementation(platform(libs.androidx.compose.bom))

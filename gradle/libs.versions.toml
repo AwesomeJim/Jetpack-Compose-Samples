@@ -105,6 +105,7 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 junit = { module = "junit:junit", version.ref = "junit" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
+androidx-work-testing = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
