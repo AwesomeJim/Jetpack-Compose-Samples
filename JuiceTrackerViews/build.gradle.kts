@@ -19,6 +19,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -39,7 +42,14 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        // Enable Jetpack Compose for this module
+        compose = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+    }
+
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
         kotlinOptions {
             jvmTarget = libs.versions.jvm.target.get()
@@ -69,4 +79,14 @@ dependencies {
 
     ksp(libs.androidx.room.compiler)
     implementation(libs.com.google.android.material)
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material)
 }
