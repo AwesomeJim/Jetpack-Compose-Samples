@@ -3,7 +3,6 @@ plugins {
     id(libs.plugins.com.android.application.get().pluginId)
     id(libs.plugins.org.jetbrains.kotlin.android.get().pluginId)
     id(libs.plugins.com.google.devtools.ksp.get().pluginId)
-    id(libs.plugins.androidx.navigation.safeargs.get().pluginId)
 }
 
 
@@ -41,20 +40,11 @@ android {
         jvmTarget = libs.versions.jvm.target.get()
     }
     buildFeatures {
-        viewBinding = true
-        // Enable Jetpack Compose for this module
         compose = true
     }
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions {
-            jvmTarget = libs.versions.jvm.target.get()
-            suppressWarnings = true
-        }
     }
 }
 
