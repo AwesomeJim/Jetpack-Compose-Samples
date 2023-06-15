@@ -108,7 +108,7 @@ fun DeleteButton(onDelete: () -> Unit, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun JuiceTrackerListPreview() {
     MaterialTheme {
