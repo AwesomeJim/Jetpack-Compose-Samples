@@ -1,23 +1,34 @@
 [versions]
+accompanistInsets="0.30.0"
 coilCompose="2.4.0"
 constraintlayout="2.1.4"
 converterScalars="2.9.0"
 datastorePreferences="1.0.0"
 fragmentKtx="1.6.0"
 kotlinxCoroutinesTest="1.7.1"
-kotlinxSerializationJson="1.4.0"
+kotlinxCoroutinesCore = "1.7.1"
+kotlinxSerializationJson= "1.5.1"
 legacySupportV4="1.0.0"
-min-sdk= "23"
+mapsKtx="3.2.1"
+mapsUtilsKtx="3.2.1"
+mapsV3Ktx="3.4.0"
+min-sdk= "22"
 navigationFragmentKtx="2.6.0"
 playServicesAds="22.1.0"
 retrofit="2.9.0"
-retrofit2KotlinxSerializationConverter="0.8.0"
+retrofit2KotlinxSerializationConverter= "1.0.0"
 roomCompiler="2.5.2"
 roomRuntime="2.5.2"
+rules="1.5.0"
+runner="1.5.2"
 target-sdk = "33"
 compile-sdk = "33"
 androidGradlePlugin = "8.0.2"
 buildToolsVersion = "33.0.2"
+hiltVersion = "2.45"
+hiltAndroid = "2.46.1"
+hiltAndroidCompiler = "2.46.1"
+hiltAndroidTesting = "2.45"
 
 #Android X
 androidx-corektx = "1.10.1"
@@ -50,6 +61,7 @@ coreTestingVersion = "2.2.0"
 
 gradleVersion = "7.2.2"
 kotlin = "1.8.10"
+kotlinStdlib = "1.8.22"
 
 ksp = "1.8.10-1.0.9"
 ktlintVersion = "0.45.2"
@@ -59,11 +71,14 @@ navigationComposeVersion = "2.6.0"
 workRuntimeKtx="2.8.1"
 
 [libraries]
+accompanist-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanistInsets" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-compose" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+androidx-core = { module = "androidx.test:core", version.ref = "rules" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+androidx-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-ext-junit" }
 androidx-legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-lifecycle-livedata-core-ktx = { module = "androidx.lifecycle:lifecycle-livedata-core-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -76,12 +91,18 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-compiler-2_5_0 = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
+androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "converterScalars" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+
+
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 com-google-android-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
@@ -109,6 +130,14 @@ androidx-navigation-navigation-compose = { module = "androidx.navigation:navigat
 androidx-compose-ui-viewbinding = { module = "androidx.compose.ui:ui-viewbinding" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "composeViewModel" }
 
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltAndroidTesting" }
+
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlinStdlib" }
+kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "kotlinStdlib" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlinStdlib" }
+
 androidx-arch-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTestingVersion" }
 androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigationComposeVersion" }
 androidx-test-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "androidx-test-espresso" }
@@ -116,10 +145,14 @@ androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core",
 androidx-test-espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidx-test-espresso"  }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
 junit = { module = "junit:junit", version.ref = "junit" }
+
+maps-utils-ktx = { module = "com.google.maps.android:maps-utils-ktx", version.ref = "mapsUtilsKtx" }
+maps-ktx = { module = "com.google.maps.android:maps-v3-ktx", version.ref = "mapsV3Ktx" }
 play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 androidx-work-testing = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
+maps = { group = "com.google.android.libraries.maps", name = "maps", version = "3.1.0-beta" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -130,3 +163,4 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 com-google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidx-navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "androidx-navigation" }
+com-google-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
