@@ -50,8 +50,10 @@ fun RallyNavHost(
             arguments = SingleAccount.arguments,
             deepLinks = SingleAccount.deepLinks
         ) { navBackStackEntry ->
+            // Retrieve the passed argument
             val accountType =
                 navBackStackEntry.arguments?.getString(SingleAccount.accountTypeArg)
+            // Pass accountType to SingleAccountScreen
             SingleAccountScreen(accountType)
         }
     }

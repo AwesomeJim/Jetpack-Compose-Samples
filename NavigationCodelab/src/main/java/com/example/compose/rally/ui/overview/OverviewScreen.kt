@@ -48,6 +48,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.rally.R
 import com.example.compose.rally.data.UserData
@@ -56,6 +57,7 @@ import com.example.compose.rally.ui.components.BillRow
 import com.example.compose.rally.ui.components.RallyAlertDialog
 import com.example.compose.rally.ui.components.RallyDivider
 import com.example.compose.rally.ui.components.formatAmount
+import com.example.compose.rally.ui.theme.RallyTheme
 import java.util.Locale
 
 @Composable
@@ -100,6 +102,33 @@ private fun AlertCard() {
             buttonText = "Dismiss".uppercase(Locale.getDefault())
         )
     }
+    /*var currentTargetElevation by remember { mutableStateOf(1.dp) }
+    LaunchedEffect(Unit) {
+        // Start the animation
+        currentTargetElevation = 8.dp
+    }
+    val animatedElevation = animateDpAsState(
+        targetValue = currentTargetElevation,
+        animationSpec = tween(durationMillis = 500),
+        finishedListener = {
+            currentTargetElevation = if (currentTargetElevation > 4.dp) {
+                1.dp
+            } else {
+                8.dp
+            }
+        }, label = ""
+    )*/
+    // synchronization and how animations can affect tests
+   /* val infiniteElevationAnimation = rememberInfiniteTransition(label = "")
+    val animatedElevation: Dp by infiniteElevationAnimation.animateValue(
+        initialValue = 1.dp,
+        targetValue = 8.dp,
+        typeConverter = Dp.VectorConverter,
+        animationSpec = infiniteRepeatable(
+            animation = tween(500),
+            repeatMode = RepeatMode.Reverse
+        ), label = ""
+    )*/
     Card {
         Column {
             AlertHeader {
@@ -110,6 +139,13 @@ private fun AlertCard() {
             )
             AlertItem(alertMessage)
         }
+    }
+}
+@Preview
+@Composable
+fun AlertCardPreview() {
+    RallyTheme {
+        OverviewScreen()
     }
 }
 

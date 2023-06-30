@@ -58,12 +58,12 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     packaging {
-//        jniLibs {
-//            excludes += ["META-INF/licenses/**"]
-//        }
-//        resources {
-//            excludes += ["META-INF/licenses/**", "META-INF/AL2.0", "META-INF/LGPL2.1"]
-//        }
+        jniLibs {
+            excludes += "META-INF/licenses/**"
+        }
+        resources {
+            excludes += listOf("META-INF/licenses/**", "META-INF/AL2.0", "META-INF/LGPL2.1")
+        }
     }
     namespace = "com.example.compose.rally"
 }
