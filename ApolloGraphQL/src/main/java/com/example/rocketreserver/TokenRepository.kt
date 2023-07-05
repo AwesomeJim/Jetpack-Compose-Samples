@@ -5,6 +5,12 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
+/**
+ * Token repository
+ * is a helper class that handles saving/retrieving a user token in EncryptedSharedPreference.
+ * We will use it to store the user token when logging in.
+ * @constructor Create empty Token repository
+ */
 object TokenRepository {
     private const val KEY_TOKEN = "TOKEN"
 
