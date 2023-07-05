@@ -1,5 +1,6 @@
 package com.example.affirmations
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -179,14 +180,20 @@ fun TopicsList(topicsList: List<Topic>, modifier: Modifier = Modifier) {
 
 
 @Preview(name = "TopicItem")
+@Preview(name = "TopicItem Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun TopicCardPreview() {
-    TopicCard(Topic(R.string.photography, 23, R.drawable.photography))
+    AffirmationsTheme {
+        TopicCard(Topic(R.string.photography, 23, R.drawable.photography))
+    }
 }
 
 
 @Preview(name = "TopicItem")
+@Preview(name = "TopicItem Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun TopicsListPreview() {
-    TopicsList(topicsList = Datasource().topics)
+    AffirmationsTheme {
+        TopicsList(topicsList = Datasource().topics)
+    }
 }

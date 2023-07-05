@@ -69,6 +69,7 @@ ktlintVersion = "0.45.2"
 materialVersion = "1.9.0"
 navigationComposeVersion = "2.6.0"
 workRuntimeKtx="2.8.1"
+apollographql = "3.8.2"
 
 [libraries]
 accompanist-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanistInsets" }
@@ -150,9 +151,13 @@ maps-utils-ktx = { module = "com.google.maps.android:maps-utils-ktx", version.re
 maps-ktx = { module = "com.google.maps.android:maps-v3-ktx", version.ref = "mapsV3Ktx" }
 play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+
+com-apollographql-apollo3-apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollographql" }
+
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 androidx-work-testing = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
 maps = { group = "com.google.android.libraries.maps", name = "maps", version = "3.1.0-beta" }
+
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -164,3 +169,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 com-google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidx-navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "androidx-navigation" }
 com-google-dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+com-apollographql-apollo3 = { id = "com.apollographql.apollo3", version.ref = "apollographql" }
