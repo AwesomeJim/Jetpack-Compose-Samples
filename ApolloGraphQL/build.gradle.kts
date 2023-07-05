@@ -1,6 +1,8 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.apollographql.apollo3)
 }
 
 android {
@@ -63,7 +65,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.security.crypto)
     implementation(libs.coil.compose)
-
+    implementation(libs.com.apollographql.apollo3.apollo.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
@@ -71,4 +73,10 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+}
+
+apollo {
+    service("service") {
+        packageName.set("com.example.rocketreserver")
+    }
 }
