@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.com.google.android.material)
 
     // architecture components
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
