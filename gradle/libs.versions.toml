@@ -5,6 +5,7 @@ constraintlayout="2.1.4"
 converterScalars="2.9.0"
 datastorePreferences="1.0.0"
 fragmentKtx="1.6.0"
+hiltNavigationCompose="1.0.0"
 kotlinxCoroutinesTest="1.7.1"
 kotlinxCoroutinesCore = "1.7.1"
 kotlinxSerializationJson= "1.5.1"
@@ -14,6 +15,7 @@ mapsUtilsKtx="3.2.1"
 mapsV3Ktx="3.4.0"
 min-sdk= "22"
 navigationFragmentKtx="2.6.0"
+pagingCommon="3.2.0-rc01"
 playServicesAds="22.1.0"
 retrofit="2.9.0"
 retrofit2KotlinxSerializationConverter= "1.0.0"
@@ -71,6 +73,7 @@ materialVersion = "1.9.0"
 navigationComposeVersion = "2.6.0"
 workRuntimeKtx="2.8.1"
 apollographql = "3.8.2"
+paggingVersion ="3.1.1"
 
 [libraries]
 accompanist-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanistInsets" }
@@ -80,6 +83,7 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-core = { module = "androidx.test:core", version.ref = "rules" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-ext-junit" }
 androidx-legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-lifecycle-livedata-core-ktx = { module = "androidx.lifecycle:lifecycle-livedata-core-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -89,9 +93,14 @@ androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-ru
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
+androidx-paging-common = { module = "androidx.paging:paging-common", version.ref = "pagingCommon" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCommon" }
+androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingCommon" }
+androidx-paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref="pagingCommon" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-compiler-2_5_0 = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomCompiler" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "rules" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
