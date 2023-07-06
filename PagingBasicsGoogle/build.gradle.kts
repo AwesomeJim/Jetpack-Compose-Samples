@@ -41,6 +41,13 @@ android {
         viewBinding = true
     }
     namespace = "com.example.android.codelabs.paging"
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = libs.versions.jvm.target.get()
+            suppressWarnings = true
+        }
+    }
 }
 
 dependencies {
