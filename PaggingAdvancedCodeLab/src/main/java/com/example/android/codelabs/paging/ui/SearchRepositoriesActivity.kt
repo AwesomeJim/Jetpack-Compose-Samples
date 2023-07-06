@@ -30,13 +30,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.codelabs.paging.Injection
 import com.example.android.codelabs.paging.databinding.ActivitySearchRepositoriesBinding
-import com.example.android.codelabs.paging.model.Repo
+import com.example.android.codelabs.paging.model.RemotePresentationState
+import com.example.android.codelabs.paging.model.asRemotePresentationState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
@@ -49,8 +49,9 @@ class SearchRepositoriesActivity : AppCompatActivity() {
         setContentView(view)
 
         // get the view model
-        val viewModel = ViewModelProvider(this, Injection.provideViewModelFactory(owner = this))
-            .get(SearchRepositoriesViewModel::class.java)
+        val viewModel = ViewModelProvider(this, Injection.provideViewModelFactory(
+            context = this,
+            owner = this))[SearchRepositoriesViewModel::class.java]
 
         // add dividers between RecyclerView's row items
         val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
@@ -70,13 +71,14 @@ class SearchRepositoriesActivity : AppCompatActivity() {
      */
     private fun ActivitySearchRepositoriesBinding.bindState(
         uiState: StateFlow<UiState>,
-        pagingData: Flow<PagingData<Repo>>,
+        pagingData: Flow<PagingData<UiModel>>,
         uiActions: (UiAction) -> Unit
     ) {
         val repoAdapter = ReposAdapter()
+        val header = ReposLoadStateAdapter { repoAdapter.retry() }
        // list.adapter = repoAdapter
         list.adapter = repoAdapter.withLoadStateHeaderAndFooter(
-            header = ReposLoadStateAdapter { repoAdapter.retry() },
+            header = header,
             footer = ReposLoadStateAdapter { repoAdapter.retry() }
         )
 
@@ -85,6 +87,7 @@ class SearchRepositoriesActivity : AppCompatActivity() {
             onQueryChanged = uiActions
         )
         bindList(
+            header = header,
             repoAdapter = repoAdapter,
             uiState = uiState,
             pagingData = pagingData,
@@ -131,9 +134,10 @@ class SearchRepositoriesActivity : AppCompatActivity() {
     }
 
     private fun ActivitySearchRepositoriesBinding.bindList(
+        header: ReposLoadStateAdapter,
         repoAdapter: ReposAdapter,
         uiState: StateFlow<UiState>,
-        pagingData: Flow<PagingData<Repo>>,
+        pagingData: Flow<PagingData<UiModel>>,
         onScrollChanged: (UiAction.Scroll) -> Unit
     ) {
         list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -148,12 +152,25 @@ class SearchRepositoriesActivity : AppCompatActivity() {
                 // show empty list
                 emptyList.isVisible = isListEmpty
                 // Only show the list if refresh succeeds.
-                list.isVisible = !isListEmpty
-
+//                list.isVisible = !isListEmpty
+//
+//                // Show loading spinner during initial load or refresh.
+//                progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+//                // Show the retry state if initial load or refresh fails.
+//                retryButton.isVisible = loadState.source.refresh is LoadState.Error
+                // Only show the list if refresh succeeds, either from the the local db or the remote.
+                list.isVisible =  loadState.source.refresh is LoadState.NotLoading || loadState.mediator?.refresh is LoadState.NotLoading
                 // Show loading spinner during initial load or refresh.
-                progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                progressBar.isVisible = loadState.mediator?.refresh is LoadState.Loading
                 // Show the retry state if initial load or refresh fails.
-                retryButton.isVisible = loadState.source.refresh is LoadState.Error
+                retryButton.isVisible = loadState.mediator?.refresh is LoadState.Error && repoAdapter.itemCount == 0
+
+                // Show a retry header if there was an error refreshing, and items were previously
+                // cached OR default to the default prepend state
+                header.loadState = loadState.mediator
+                    ?.refresh
+                    ?.takeIf { it is LoadState.Error && repoAdapter.itemCount > 0 }
+                    ?: loadState.prepend
 
                 // Toast on any error, regardless of whether it came from RemoteMediator or PagingSource
                 val errorState = loadState.source.append as? LoadState.Error
@@ -170,10 +187,12 @@ class SearchRepositoriesActivity : AppCompatActivity() {
             }
         }
         val notLoading = repoAdapter.loadStateFlow
-            // Only emit when REFRESH LoadState for the paging source changes.
-            .distinctUntilChangedBy { it.source.refresh }
-            // Only react to cases where REFRESH completes i.e., NotLoading.
-            .map { it.source.refresh is LoadState.NotLoading }
+//            // Only emit when REFRESH LoadState for the paging source changes.
+//            .distinctUntilChangedBy { it.source.refresh }
+//            // Only react to cases where REFRESH completes i.e., NotLoading.
+//            .map { it.source.refresh is LoadState.NotLoading }
+            .asRemotePresentationState()
+            .map { it == RemotePresentationState.PRESENTED }
 
         val hasNotScrolledForCurrentSearch = uiState
             .map { it.hasNotScrolledForCurrentSearch }

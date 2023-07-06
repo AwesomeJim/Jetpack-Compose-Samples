@@ -16,7 +16,15 @@
 
 package com.example.android.codelabs.paging.model
 
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.scan
 
 /**
  * Immutable model class for a Github repo that holds all the information about a repository.
@@ -24,8 +32,9 @@ import com.google.gson.annotations.SerializedName
  * with the serialized name.
  * This class also defines the Room repos table, where the repo [id] is the primary key.
  */
+@Entity(tableName = "repos")
 data class Repo(
-    @field:SerializedName("id") val id: Long,
+    @PrimaryKey @field:SerializedName("id") val id: Long,
     @field:SerializedName("name") val name: String,
     @field:SerializedName("full_name") val fullName: String,
     @field:SerializedName("description") val description: String?,
@@ -34,3 +43,35 @@ data class Repo(
     @field:SerializedName("forks_count") val forks: Int,
     @field:SerializedName("language") val language: String?
 )
+
+
+enum class RemotePresentationState {
+    INITIAL, REMOTE_LOADING, SOURCE_LOADING, PRESENTED
+}
+
+@OptIn(ExperimentalCoroutinesApi::class)
+fun Flow<CombinedLoadStates>.asRemotePresentationState(): Flow<RemotePresentationState> =
+    scan(RemotePresentationState.INITIAL) { state, loadState ->
+        when (state) {
+            RemotePresentationState.PRESENTED -> when (loadState.mediator?.refresh) {
+                is LoadState.Loading -> RemotePresentationState.REMOTE_LOADING
+                else -> state
+            }
+
+            RemotePresentationState.INITIAL -> when (loadState.mediator?.refresh) {
+                is LoadState.Loading -> RemotePresentationState.REMOTE_LOADING
+                else -> state
+            }
+
+            RemotePresentationState.REMOTE_LOADING -> when (loadState.source.refresh) {
+                is LoadState.Loading -> RemotePresentationState.SOURCE_LOADING
+                else -> state
+            }
+
+            RemotePresentationState.SOURCE_LOADING -> when (loadState.source.refresh) {
+                is LoadState.NotLoading -> RemotePresentationState.PRESENTED
+                else -> state
+            }
+        }
+    }.distinctUntilChanged()
+
