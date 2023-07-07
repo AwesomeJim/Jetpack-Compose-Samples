@@ -1,6 +1,7 @@
 package com.awesomejim.popularmovies.model
 
-import android.graphics.Movie
+
+import com.awesomejim.popularmovies.data.local.Movie
 import com.google.gson.annotations.SerializedName
 
 data class MovieResponse(
