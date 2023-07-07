@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NewsApiService {
-    @GET("everything?q=apple&sortBy=popularity&apiKey=${BuildConfig.newsApiKey}&pageSize=20")
+    @GET("everything?q=apple&sortBy=popularity&apiKey=${BuildConfig.newsApiKey}&pageSize=10")
     suspend fun getNews(
         @Query("page") page: Int
     ): NewsResponse

@@ -3,7 +3,6 @@ package com.awesomejim.pagingnewsapp.ui.news
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
@@ -32,10 +31,9 @@ fun NewsListScreen() {
         ) { index ->
             val article = articles[index]
             article?.let{
-                Text(
-                    modifier = Modifier
-                        .height(75.dp),
-                    text = it.title,
+                NewsResourceCardExpanded(
+                    newsResource = it,
+                    onClick = {}
                 )
                 Divider()
             }

@@ -10,3 +10,20 @@ data class Article(
     val url: String,
     val urlToImage: String
 )
+
+
+val previewNewsResources = listOf(
+    Article(
+        author = "Parker Hall",
+        title = "Apple Music Sing Adds 'Karaoke Mode' to Streaming Songs",
+        description = "America's most popular music streaming service is adding the ability to turn down the vocals and sing along.",
+        url = "https://www.wired.com/story/apple-music-sing/",
+        urlToImage = "https://media.wired.com/photos/638f959b54aee410695ffa12/191:100/w_1280,c_limit/Apple-Music-Sing-Featured-Gear.jpg",
+        publishedAt = "2022-12-06T20:51:11Z",
+        content = "When it comes to advanced technical features and seamless compatibility with iOS devices, Apple Music has Spotify well and truly beaten. The Swedish streaming giant has essentially the same content l… [+3348 chars]",
+        source = Source(
+            id = "wired",
+            name = "Wired"
+        )
+    )
+)
