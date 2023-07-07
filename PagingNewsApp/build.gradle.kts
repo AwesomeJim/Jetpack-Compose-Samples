@@ -2,18 +2,15 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    alias(libs.plugins.com.apollographql.apollo3)
-    id(libs.plugins.com.google.devtools.ksp.get().pluginId)
     alias(libs.plugins.com.google.dagger.hilt)
     id(libs.plugins.kapt.get().pluginId)
 }
 
 android {
-    namespace = "com.awesomejim.pokemongrapgqlpaginglib"
+    namespace = "com.awesomejim.pagingnewsapp"
     compileSdk = libs.versions.compile.sdk.get().toInt()
-
     defaultConfig {
-        applicationId = "com.awesomejim.pokemongrapgqlpaginglib"
+        applicationId = "com.awesomejim.pagingnewsapp"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = 1
@@ -38,20 +35,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = libs.versions.jvm.target.get()
+        freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
+    }
     buildFeatures {
         compose = true
     }
-    kotlinOptions {
-        jvmTarget = libs.versions.jvm.target.get()
-        freeCompilerArgs += listOf(
-            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-            "-opt-in=androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
-            "-opt-in=androidx.paging.ExperimentalPagingApi",
-            "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi",
-        )
-    }
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
     packaging {
         resources {
@@ -67,27 +59,17 @@ android {
 }
 
 dependencies {
-    val kotlin_version = "1.8.21"
-    //------------KOTLIN-----------------------
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version"))
-    implementation(libs.kotlinx.serialization.json)
-
-    //--------------ANDROID--------------------
+    //---------Android Core----------------------
     implementation(libs.androidx.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.runtime.compose)
-    implementation(libs.androidx.navigation.compose)
-
-    //-------------COMPOSE------------------------
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
+
+    //---------Compose----------------------
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-
-    //------------APOLLO
-    implementation(libs.com.apollographql.apollo3.apollo.runtime)
 
 
     //-----------PAGING------------------
@@ -99,20 +81,18 @@ dependencies {
     //-----------COIL--------------------
     implementation(libs.coil.compose)
 
-    //-----------ROOM--------------------
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    annotationProcessor(libs.androidx.room.compiler)
-    ksp(libs.androidx.room.compiler)
-    implementation (libs.androidx.room.paging)
-
-
     //---------HILT----------------------
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
     implementation (libs.androidx.hilt.navigation.compose)
 
-    //---------TEST
+    //---------Retrofit------------------
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.retrofit.mock)
+    implementation(libs.okhttp.logging.interceptor)
+
+    //---------Test----------------------
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
@@ -120,9 +100,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-}
-apollo {
-    service("pokemon") {
-        packageName.set("com.awesomejim.pokemongrapgqlpaginglib.data")
-    }
 }
