@@ -5,6 +5,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    id(libs.plugins.com.google.devtools.ksp.get().pluginId)
     alias(libs.plugins.com.google.dagger.hilt)
     id(libs.plugins.kapt.get().pluginId)
 }
@@ -13,10 +14,11 @@ val localProperties = Properties()
 localProperties.load(FileInputStream(rootProject.file("local.properties")))
 
 android {
-    namespace = "com.awesomejim.pagingnewsapp"
+    namespace = "com.awesomejim.popularmovies"
     compileSdk = libs.versions.compile.sdk.get().toInt()
+
     defaultConfig {
-        applicationId = "com.awesomejim.pagingnewsapp"
+        applicationId = "com.awesomejim.popularmovies"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = 1
@@ -26,7 +28,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField("String", "newsApiKey", localProperties.getProperty("newsApiKey"))
+        buildConfigField("String", "MOVIE_API_KEY", localProperties.getProperty("MOVIE_API_KEY"))
     }
 
     buildTypes {
@@ -38,17 +40,21 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = libs.versions.jvm.target.get()
         freeCompilerArgs += listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
+
     buildFeatures {
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
@@ -57,27 +63,20 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions {
-            jvmTarget = libs.versions.jvm.target.get()
-            suppressWarnings = true
-        }
-    }
 }
 
 dependencies {
-    //---------Android Core----------------------
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
 
-    //---------Compose----------------------
+    //-------Compose--------------------------
+    implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-
 
     //-----------PAGING------------------
     implementation(libs.androidx.paging.common.ktx)
@@ -87,6 +86,14 @@ dependencies {
 
     //-----------COIL--------------------
     implementation(libs.coil.compose)
+
+
+    //-----------ROOM--------------------
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    implementation (libs.androidx.room.paging)
 
     //---------HILT----------------------
     implementation(libs.hilt.android)
@@ -99,7 +106,7 @@ dependencies {
     implementation(libs.retrofit.mock)
     implementation(libs.okhttp.logging.interceptor)
 
-    //---------Test----------------------
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
