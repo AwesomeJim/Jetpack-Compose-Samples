@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.com.android.application)
@@ -5,6 +8,9 @@ plugins {
     alias(libs.plugins.com.google.dagger.hilt)
     id(libs.plugins.kapt.get().pluginId)
 }
+
+val localProperties = Properties()
+localProperties.load(FileInputStream(rootProject.file("local.properties")))
 
 android {
     namespace = "com.awesomejim.pagingnewsapp"
@@ -20,6 +26,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String", "newsApiKey", localProperties.getProperty("newsApiKey"))
     }
 
     buildTypes {
