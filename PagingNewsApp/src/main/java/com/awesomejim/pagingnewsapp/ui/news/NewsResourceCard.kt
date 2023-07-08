@@ -17,6 +17,8 @@ package com.awesomejim.pagingnewsapp.ui.news
  */
 
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,11 +41,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.onClick
@@ -56,12 +64,16 @@ import com.awesomejim.pagingnewsapp.R
 import com.awesomejim.pagingnewsapp.model.Article
 import com.awesomejim.pagingnewsapp.model.previewNewsResources
 import com.awesomejim.pagingnewsapp.ui.theme.MyNewsAppTheme
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 
 /**
  * [NewsResource] card used on the following screens: For You, Episodes, Saved
  */
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsResourceCardExpanded(
@@ -78,7 +90,8 @@ fun NewsResourceCardExpanded(
         // Pass null for action to only override the label and not the actual action.
         modifier = modifier.semantics {
             onClick(label = clickActionLabel, action = null)
-        }
+        }.padding(top = 6.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column {
             if (!newsResource.urlToImage.isNullOrEmpty()) {
@@ -90,21 +103,17 @@ fun NewsResourceCardExpanded(
                 modifier = Modifier.padding(16.dp)
             ) {
                 Column {
-                    Row {
+                    NewsResourceTitle(
+                        newsResource.title,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         NewsResourceAuthors(listOf(newsResource.author))
-                    }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Row {
-                        NewsResourceTitle(
-                            newsResource.title,
-                            modifier = Modifier.fillMaxWidth((.8f))
-                        )
                         Spacer(modifier = Modifier.weight(1f))
+                        NewsResourceDate(newsResource.publishedAt)
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    NewsResourceDate(newsResource.publishedAt)
-                    Spacer(modifier = Modifier.height(12.dp))
-                    NewsResourceShortDescription(newsResource.description)
+                    //  NewsResourceShortDescription(newsResource.description)
                 }
             }
         }
@@ -177,32 +186,41 @@ fun NewsResourceTitle(
 }
 
 
-//@RequiresApi(Build.VERSION_CODES.O)
-//@Composable
-//private fun dateFormatted(publishDate: Instant): String {
-//    var zoneId by remember { mutableStateOf(ZoneId.systemDefault()) }
-//
-//    val context = LocalContext.current
-//
-//    DisposableEffect(context) {
-//        val receiver = TimeZoneBroadcastReceiver(
-//            onTimeZoneChanged = { zoneId = ZoneId.systemDefault() }
-//        )
-//        receiver.register(context)
-//        onDispose {
-//            receiver.unregister(context)
-//        }
-//    }
-//
-//    return DateTimeFormatter.ofPattern("MMM d, yyyy")
-//        .withZone(zoneId).format(publishDate.toJavaInstant())
-//}
+@RequiresApi(Build.VERSION_CODES.O)
+@Composable
+private fun dateFormatted(publishDate: String): String {
+    var zoneId by remember { mutableStateOf(ZoneId.systemDefault()) }
 
+    val context = LocalContext.current
+
+    DisposableEffect(context) {
+        val receiver = TimeZoneBroadcastReceiver(
+            onTimeZoneChanged = { zoneId = ZoneId.systemDefault() }
+        )
+        receiver.register(context)
+        onDispose {
+            receiver.unregister(context)
+        }
+    }
+
+//    return DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm:ss")
+//        .withZone(zoneId).format(publishDate)
+    val dateTime = LocalDateTime.parse(publishDate, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+    val localDateTime = dateTime.atZone(zoneId)
+    val formatter = DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm:ss")
+    return localDateTime.format(formatter)
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NewsResourceDate(
     publishDate: String
 ) {
-    Text(publishDate, style = MaterialTheme.typography.labelSmall)
+    Text(
+        dateFormatted(publishDate),
+        style = MaterialTheme.typography.labelSmall
+    )
+
 }
 
 @Composable
@@ -227,7 +245,7 @@ fun NewsResourceTopics(
 }
 
 
-
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview("NewsResourceCardExpanded")
 @Composable
 fun ExpandedNewsResourcePreview() {
