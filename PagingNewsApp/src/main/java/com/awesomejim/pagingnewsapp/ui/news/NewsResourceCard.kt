@@ -207,7 +207,7 @@ private fun dateFormatted(publishDate: String): String {
 //        .withZone(zoneId).format(publishDate)
     val dateTime = LocalDateTime.parse(publishDate, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
     val localDateTime = dateTime.atZone(zoneId)
-    val formatter = DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm:ss")
+    val formatter = DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm:ss a")
     return localDateTime.format(formatter)
 }
 
