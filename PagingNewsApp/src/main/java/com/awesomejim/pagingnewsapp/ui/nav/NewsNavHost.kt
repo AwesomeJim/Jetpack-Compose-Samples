@@ -3,6 +3,7 @@ package com.awesomejim.pagingnewsapp.ui.nav
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -16,10 +17,10 @@ import com.google.gson.Gson
 
 @Composable
 fun NewsNavHost(
-    viewModel: NewsViewModel,
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
+    val viewModel = hiltViewModel<NewsViewModel>()
     NavHost(
         navController = navController,
         startDestination = Home.route,

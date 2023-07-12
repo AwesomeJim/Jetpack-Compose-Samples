@@ -10,7 +10,7 @@ class NewsRepository @Inject constructor(
 ) {
     fun getNews() = Pager(
         config = PagingConfig(
-            pageSize = 20,
+            pageSize = 10,
         ),
         pagingSourceFactory = {
             NewsPagingSource(newsApiService)
