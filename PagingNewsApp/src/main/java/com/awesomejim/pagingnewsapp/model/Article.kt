@@ -1,5 +1,12 @@
 package com.awesomejim.pagingnewsapp.model
 
+import android.net.Uri
+import android.os.Parcelable
+import com.google.gson.Gson
+import kotlinx.parcelize.Parcelize
+
+
+@Parcelize
 data class Article(
     val author: String,
     val content: String,
@@ -9,7 +16,9 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-)
+):Parcelable {
+    override fun toString(): String = Uri.encode(Gson().toJson(this))
+}
 
 data class Metadata(
     val author: PostAuthor,

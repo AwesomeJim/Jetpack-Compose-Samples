@@ -142,7 +142,7 @@ private fun PostMetadata(
                     id = R.string.article_post_min_read,
                     formatArgs = arrayOf(
                         metadata.publishedAt,
-                        metadata.source.name
+                        2, //metadata.source.name
                     )
                 ),
                 style = MaterialTheme.typography.bodySmall

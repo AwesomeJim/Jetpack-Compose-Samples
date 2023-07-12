@@ -12,15 +12,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
+import com.awesomejim.pagingnewsapp.model.Article
 
 @Composable
-fun NewsListScreen() {
-    val viewModel = hiltViewModel<NewsViewModel>()
-
+fun NewsListScreen(
+    viewModel:NewsViewModel,
+    onClickArticle: (Article) -> Unit = {}
+) {
     val articles = viewModel.getBreakingNews().collectAsLazyPagingItems()
 
     LazyColumn {
@@ -32,7 +33,9 @@ fun NewsListScreen() {
             article?.let{
                 NewsResourceCardExpanded(
                     newsResource = it,
-                    onClick = {}
+                    onClick = {
+                        onClickArticle(it)
+                    }
                 )
                 //Divider()
             }

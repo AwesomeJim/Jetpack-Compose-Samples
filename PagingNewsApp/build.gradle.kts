@@ -5,6 +5,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    id(libs.plugins.kotlin.parcelize.get().pluginId)
     alias(libs.plugins.com.google.dagger.hilt)
     id(libs.plugins.kapt.get().pluginId)
 }
@@ -78,6 +79,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.iconsExtended)
+    implementation(libs.androidx.navigation.compose)
+
 
 
     //-----------PAGING------------------
