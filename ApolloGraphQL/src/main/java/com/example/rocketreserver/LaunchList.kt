@@ -35,7 +35,7 @@ fun LaunchList(onLaunchClick: (launchId: String) -> Unit) {
         launchList = launchList + response?.data?.launches?.launches?.filterNotNull().orEmpty()
     }
     LazyColumn {
-        items(launchList) { launch ->
+        items(launchList, key = { it.id }) { launch ->
             LaunchItem(launch = launch, onClick = onLaunchClick)
         }
         item {
