@@ -158,6 +158,7 @@ fun DogItem(
     val color by animateColorAsState(
         targetValue = if (expanded) MaterialTheme.colorScheme.tertiaryContainer
         else MaterialTheme.colorScheme.primaryContainer,
+        label = "",
     )
     Card(modifier = modifier) {
         Column(

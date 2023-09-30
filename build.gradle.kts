@@ -16,7 +16,7 @@ subprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
         println("Configuring $name in project ${project.name}...")
         kotlinOptions {
-            jvmTarget = "1.8"
+           jvmTarget = libs.versions.jvm.target.get()
             suppressWarnings = true
         }
     }

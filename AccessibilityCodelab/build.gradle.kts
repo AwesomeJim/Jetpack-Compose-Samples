@@ -147,7 +147,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
         freeCompilerArgs += "-opt-in=kotlin.Experimental"
 
         // Set JVM target to 1.8
-        jvmTarget = "1.8"
+       jvmTarget = libs.versions.jvm.target.get()
     }
 }
 

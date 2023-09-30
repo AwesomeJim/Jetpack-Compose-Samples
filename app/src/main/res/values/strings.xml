@@ -15,4 +15,14 @@
     <string name="compose_description">In this tutorial, you build a simple UI component with declarative functions. You call Compose functions to say what elements you want and the Compose compiler does the rest. Compose is built around Composable functions. These functions let you define your app\'s UI programmatically because they let you describe how it should look and provide data dependencies, rather than focus on the process of the UI\'s construction, such as initializing an element and then attaching it to a parent. To create a Composable function, you add the @Composable annotation to the function name.</string>
     <string name="roll">Roll</string>
 
+    <string name="add_medication">Add Medication</string>
+    <string name="medication_name">Medication Name</string>
+    <string name="dosage">Dosage</string>
+    <string name="recurrence">Recurrence</string>
+    <string name="end_date">End Date</string>
+    <string name="times_of_day">Time of the Day</string>
+    <string name="value_is_empty">Value is Empty %s</string>
+    <string name="success">Success</string>
+    <string name="save">Save</string>
+
 </resources>

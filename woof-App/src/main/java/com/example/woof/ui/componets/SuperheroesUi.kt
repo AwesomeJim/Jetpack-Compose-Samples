@@ -191,6 +191,7 @@ fun HeroItemPreview() {
 }
 
 @Preview("Heroes List")
+@Preview("Dark Theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun HeroesPreview() {
     WoofTheme(darkTheme = false) {
