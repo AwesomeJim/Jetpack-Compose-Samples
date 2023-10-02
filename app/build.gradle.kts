@@ -75,7 +75,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(platform(libs.androidx.compose.bom))
-
+    implementation(libs.coil.compose)
 
 //    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation(libs.androidx.compose.foundation)

@@ -318,7 +318,9 @@ private fun Header(
  */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun TopicRow(topic: String, expanded: Boolean, onClick: () -> Unit) {
+private fun TopicRow(topic: String,
+                     expanded: Boolean,
+                     onClick: () -> Unit) {
     TopicRowSpacer(visible = expanded)
     Surface(
         modifier = Modifier

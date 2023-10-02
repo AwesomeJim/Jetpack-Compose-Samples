@@ -1,6 +1,6 @@
 [versions]
 accompanistInsets="0.30.1"
-accompanistSwiperefresh="0.30.1"
+accompanistSwiperefresh="0.32.0"
 coilCompose="2.4.0"
 constraintlayout="2.1.4"
 converterScalars="2.9.0"
@@ -12,7 +12,7 @@ kotlinxCoroutinesCore = "1.7.3"
 kotlinxSerializationJson= "1.6.0"
 legacySupportV4="1.0.0"
 lifecycleVersion="2.6.2"
-mapsKtx="3.2.1"
+maps="3.1.0"
 mapsUtilsKtx="3.2.1"
 mapsV3Ktx="3.4.0"
 min-sdk= "22"
@@ -29,7 +29,7 @@ runner="1.5.2"
 securityCrypto="1.1.0-alpha06"
 target-sdk = "34"
 compile-sdk = "34"
-androidGradlePlugin = "8.1.1"
+androidGradlePlugin = "8.1.2"
 buildToolsVersion = "33.0.2"
 hiltVersion = "2.45"
 hiltAndroid = "2.48"
@@ -47,7 +47,7 @@ androidx-test-ext-truth = "1.5.0"
 
 
 #Compose  Compose Bill of Materials (BOM)
-androidx-compose-bom = "2023.09.01"
+androidx-compose-bom = "2023.09.02"
 androidx-activity-compose = "1.7.2"
 composeUi = "1.3.1"
 composeUiTooling = "1.4.2"
@@ -67,7 +67,7 @@ coreTestingVersion = "2.2.0"
 
 gradleVersion = "7.2.2"
 kotlin = "1.8.10"
-kotlinStdlib = "1.9.0"
+kotlinStdlib = "1.9.10"
 recyclerview = "1.3.1"
 ksp = "1.8.10-1.0.9"
 ktlintVersion = "0.45.2"
@@ -79,7 +79,7 @@ turbine= "1.0.0"
 workRuntimeKtx="2.8.1"
 apollographql = "3.8.2"
 paggingVersion ="3.1.1"
-okhttpLoggingInterceptorVersion = "4.10.0"
+okhttpLoggingInterceptorVersion = "4.11.0"
 
 [libraries]
 accompanist-insets = { module = "com.google.accompanist:accompanist-insets", version.ref = "accompanistInsets" }
@@ -179,7 +179,7 @@ com-apollographql-apollo3-apollo-runtime = { module = "com.apollographql.apollo3
 
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 androidx-work-testing = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
-maps = { group = "com.google.android.libraries.maps", name = "maps", version = "3.1.0-beta" }
+maps = { group = "com.google.android.libraries.maps", name = "maps", version = "maps" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
