@@ -24,7 +24,9 @@ fun NewsListScreen(
 ) {
     val articles = viewModel.getBreakingNews().collectAsLazyPagingItems()
 
-    LazyColumn {
+    LazyColumn(
+
+    ) {
         items(
             count = articles.itemCount,
             key = articles.itemKey{ it.url }
