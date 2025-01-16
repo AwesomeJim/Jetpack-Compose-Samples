@@ -67,7 +67,7 @@ android {
 }
 
 dependencies {
-    val kotlin_version = "1.9.20"
+    val kotlin_version = "2.1.0"
     //------------KOTLIN-----------------------
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:$kotlin_version"))
     implementation(libs.kotlinx.serialization.json)
